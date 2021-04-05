@@ -30,10 +30,11 @@ function checkDraw(){}
 
 // trocar jogador
 function changePlayer(){
-
-if(currentPlayer == "Player1") { currentPlayer = "Player2"} else {
-    currentPlayer = "Player1"
+if (currentPlayer === "Player1") { 
+    currentPlayer = "Player2"
+    return
 }
+currentPlayer = "Player1"
 }
 
 // resetar jogo
