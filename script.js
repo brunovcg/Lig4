@@ -14,6 +14,8 @@ const map = [
  [0,0,0,0,0,0]
 ]
 
+const mapReset = [...map]
+
 const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
@@ -35,7 +37,17 @@ function changePlayer(){}
 function moveCircle() {}
 
 // resetar jogo
-function reset(){}
+function reset(){
+    map = mapReset;
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[i].length; j++) {
+            const circleOnMap = document.getElementById(`${i}-${j}`)
+            circleOnMap.classList.remove('player1')
+            circleOnMap.classList.remove('player2')
+        }
+    }
+    currentPlayer = 'Player1'
+}
 
 
 // variavel jogador atual
