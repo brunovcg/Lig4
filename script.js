@@ -21,9 +21,6 @@ const main = document.getElementById("gameBoard")
 let currentPlayer = "Player1"
 
 
-//  map["click"][indexOf]
-// map[0][1]
-
 //  checar vitoria
 function checkVictory(){}
 
@@ -45,15 +42,6 @@ function reset(){
     }
     currentPlayer = 'Player1'
 }
-
-
-// variavel jogador atual
-
-
-// click coluna
-// const clicarColuna = document.querySelector(".columnX").addEventListener("click", function(e){
-//     const variavel = e.currentTarget
-// })
 
 
 // criação do MAPA com DOM
