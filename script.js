@@ -31,9 +31,6 @@ function checkDraw(){}
 // trocar jogador
 function changePlayer(){}
 
-
-function moveCircle() {}
-
 // resetar jogo
 function reset(){}
 
@@ -67,7 +64,36 @@ for(let i = 0; i < map.length; i++) {
 
 
 
+const moveCircle = (e) => {
+    const currentColumn = e.currentTarget;
+    const columnOnMap = currentColumn.id.substring(6)
+    const columnIsFull = map[columnOnMap].indexOf(0) === -1
 
+    if (columnIsFull) {return} 
+
+    const index = map[columnOnMap].indexOf(0)
+
+    const mapPosition = document.getElementById(`${columnOnMap}-${index}`)
+    
+    if (currentPlayer === 'Player1') {
+        mapPosition.classList.add('player1')
+        map[columnOnMap][index] = 1
+    }
+    if (currentPlayer === 'Player2') {
+        mapPosition.classList.add('player2')
+        map[columnOnMap][index] = 2
+    }
+
+    checkVictory()
+    checkDraw()
+    changePlayer()
+}
+
+const columns = document.querySelectorAll('.column')
+
+columns.forEach(item => {
+    item.addEventListener('click', moveCircle)
+}) 
 
 
 
