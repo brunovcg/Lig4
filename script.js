@@ -24,7 +24,13 @@ function checkVictory(col,line){
 }
 
 // checar empate
-function checkDraw(){}
+function checkDraw(){
+    let merged = [].concat.apply([], map);
+    let checkNum = merged.includes(0);
+    if(checkNum === false) {
+      //   mensagem. innerHTML =
+    }
+}
 
 // trocar jogador
 function changePlayer(){
