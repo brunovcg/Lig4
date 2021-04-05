@@ -29,7 +29,12 @@ function checkVictory(){}
 function checkDraw(){}
 
 // trocar jogador
-function changePlayer(){}
+function changePlayer(currentPlayer){
+
+if(currentPlayer == "Player1") { currentPlayer = "Player2"} else {
+    currentPlayer = "Player1"
+}
+}
 
 
 function moveCircle() {}
