@@ -27,8 +27,9 @@ function checkVictory(col,line){
 function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
-    if(checkNum === false) {
+    if(!checkNum) {
       //   mensagem. innerHTML =
+      // TIRAR HIDDEN DA TELA DE DRAW
     }
 }
 
