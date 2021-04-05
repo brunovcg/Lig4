@@ -1,0 +1,25 @@
+#gameBoard {
+
+    display:flex;
+    flex-direction: row;
+    width: fit-content;
+    border: 2px green solid;
+    
+}
+
+.column {
+
+    display: flex;
+    flex-direction: column-reverse;
+    border: 2px red solid;
+    width: 25px;
+
+}
+
+.circle {
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+    border: 2px black solid;
+
+}
