@@ -47,6 +47,8 @@ function reset(){
         }
     }
     currentPlayer = 'Player1'
+
+    // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
 }
 
 
