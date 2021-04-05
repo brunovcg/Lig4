@@ -4,7 +4,7 @@
 // Classe dois => Player2
 
 
-const map = [
+let map = [
  [0,0,0,0,0,0],
  [0,0,0,0,0,0],
  [0,0,0,0,0,0],
