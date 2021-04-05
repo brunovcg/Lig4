@@ -29,7 +29,13 @@ function checkVictory(){}
 function checkDraw(){}
 
 // trocar jogador
-function changePlayer(){}
+function changePlayer(){
+if (currentPlayer === "Player1") { 
+    currentPlayer = "Player2"
+    return
+}
+currentPlayer = "Player1"
+}
 
 // resetar jogo
 function reset(){}
@@ -87,6 +93,10 @@ const moveCircle = (e) => {
     checkVictory()
     checkDraw()
     changePlayer()
+
+    console.log(currentPlayer)
+
+    
 }
 
 const columns = document.querySelectorAll('.column')
