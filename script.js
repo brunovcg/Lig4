@@ -32,7 +32,7 @@ if (currentPlayer === "Player1") {
     currentPlayer = "Player2"
     return
 }
-    currentPlayer = "Player1"
+currentPlayer = "Player1"
 }
 
 // resetar jogo
