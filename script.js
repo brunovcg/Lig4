@@ -4,7 +4,7 @@
 // Classe dois => Player2
 
 
-const map = [
+let map = [
  [0,0,0,0,0,0],
  [0,0,0,0,0,0],
  [0,0,0,0,0,0],
@@ -18,35 +18,37 @@ const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
 
-
-//  map["click"][indexOf]
-// map[0][1]
-
 //  checar vitoria
-function checkVictory(){}
+function checkVictory(col,line){
+
+}
 
 // checar empate
 function checkDraw(){}
 
 // trocar jogador
 function changePlayer(){
-
-if(currentPlayer == "Player1") { currentPlayer = "Player2"} else {
-    currentPlayer = "Player1"
+if (currentPlayer === "Player1") { 
+    currentPlayer = "Player2"
+    return
 }
+currentPlayer = "Player1"
 }
 
 // resetar jogo
-function reset(){}
+function reset(){
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[i].length; j++) {
+            map[i][j] = 0;
+            const circleOnMap = document.getElementById(`${i}-${j}`)
+            circleOnMap.classList.remove('player1')
+            circleOnMap.classList.remove('player2')
+        }
+    }
+    currentPlayer = 'Player1'
 
-
-// variavel jogador atual
-
-
-// click coluna
-// const clicarColuna = document.querySelector(".columnX").addEventListener("click", function(e){
-//     const variavel = e.currentTarget
-// })
+    // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
+}
 
 
 // criação do MAPA com DOM
@@ -76,24 +78,22 @@ const moveCircle = (e) => {
 
     if (columnIsFull) {return} 
 
-    const index = map[columnOnMap].indexOf(0)
+    const lineOnMap = map[columnOnMap].indexOf(0)
 
-    const mapPosition = document.getElementById(`${columnOnMap}-${index}`)
+    const mapPosition = document.getElementById(`${columnOnMap}-${lineOnMap}`)
     
     if (currentPlayer === 'Player1') {
         mapPosition.classList.add('player1')
-        map[columnOnMap][index] = 1
+        map[columnOnMap][lineOnMap] = 1
     }
     if (currentPlayer === 'Player2') {
         mapPosition.classList.add('player2')
-        map[columnOnMap][index] = 2
+        map[columnOnMap][lineOnMap] = 2
     }
 
-    checkVictory()
+    checkVictory(columnOnMap,lineOnMap)
     checkDraw()
     changePlayer()
-
-    console.log(currentPlayer)
 
     
 }
