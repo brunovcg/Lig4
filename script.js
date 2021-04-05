@@ -14,8 +14,6 @@ let map = [
  [0,0,0,0,0,0]
 ]
 
-const mapReset = [...map]
-
 const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
@@ -39,7 +37,6 @@ if (currentPlayer === "Player1") {
 
 // resetar jogo
 function reset(){
-    // map = mapReset;
     for (let i = 0; i < map.length; i++) {
         for (let j = 0; j < map[i].length; j++) {
             map[i][j] = 0;
