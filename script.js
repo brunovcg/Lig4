@@ -21,6 +21,21 @@ let currentPlayer = "Player1"
 //  checar vitoria
 function checkVictory(col,line){
 
+    function checkVertical(coluna,linha) {
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha-3]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha+1]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2] && map[coluna][linha] == map[coluna][linha+3]) {console.log(`${currentPlayer} win!`); return true}
+
+        return false
+
+    } checkVertical(col,line)
+
+    
 }
 
 // checar empate
@@ -80,7 +95,7 @@ for(let i = 0; i < map.length; i++) {
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
-    const columnOnMap = currentColumn.id.substring(6)
+    const columnOnMap = Number(currentColumn.id.substring(6))
     const columnIsFull = map[columnOnMap].indexOf(0) === -1
 
     if (columnIsFull) {return} 
