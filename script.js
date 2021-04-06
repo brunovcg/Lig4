@@ -17,8 +17,7 @@ let map = [
 const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
-
-
+let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
 
@@ -36,10 +35,13 @@ function checkVictory(col,line){
 
     } checkVertical(col,line)
 
-    function checkHorizontal(coluna,linha) {
-
-        
-     } checkHorizontal(col,line)
+        function checkHorizontal(coluna, linha) {
+            if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {console.log(`${currentPlayer} win!`); return true}
+            return false
+        } checkHorizontal(col,line)
 
      function checkDiagonal(coluna,linha) {
          const current = map[coluna][linha];
@@ -66,6 +68,8 @@ function checkVictory(col,line){
 
         else {return false}
     } checkDiagonalReverted(col,line)
+
+    
 }
 
 
@@ -75,8 +79,8 @@ function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
     if(!checkNum) {
-      //   mensagem. innerHTML =
-      // TIRAR HIDDEN DA TELA DE DRAW
+       draw.innerHTML = "Empatou!";
+       draw.style.display = "block";
     }
 }
 
