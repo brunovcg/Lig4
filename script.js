@@ -20,14 +20,31 @@ let currentPlayer = "Player1"
 let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
-    function checkHorizontal(coluna, linha) {
-        if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {console.log(`${currentPlayer} win!`); return true}
-        if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {console.log(`${currentPlayer} win!`); return true}
-        if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {console.log(`${currentPlayer} win!`); return true}
-        if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {console.log(`${currentPlayer} win!`); return true}
+
+    function checkVertical(coluna,linha) {
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha-3]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha+1]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2] && map[coluna][linha] == map[coluna][linha+3]) {console.log(`${currentPlayer} win!`); return true}
+
         return false
-    } 
-    checkHorizontal(col,line)
+
+    } checkVertical(col,line)
+
+    
+        function checkHorizontal(coluna, linha) {
+            if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {console.log(`${currentPlayer} win!`); return true}
+            return false
+        } 
+        checkHorizontal(col,line)
+    
 }
 
 // checar empate
@@ -44,9 +61,13 @@ function checkDraw(){
 function changePlayer(){
 if (currentPlayer === "Player1") { 
     currentPlayer = "Player2"
+    document.getElementById('p2').classList.add('playerFocus')
+    document.getElementById('p1').classList.remove('playerFocus')
     return
 }
 currentPlayer = "Player1"
+document.getElementById('p1').classList.add('playerFocus')
+document.getElementById('p2').classList.remove('playerFocus')
 }
 
 // resetar jogo
@@ -64,6 +85,8 @@ function reset(){
     // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
 }
 
+const btnReset = document.getElementById("btnReset");
+btnReset.addEventListener("click", reset)
 
 // criação do MAPA com DOM
 for(let i = 0; i < map.length; i++) {
@@ -87,7 +110,7 @@ for(let i = 0; i < map.length; i++) {
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
-    const columnOnMap = currentColumn.id.substring(6)
+    const columnOnMap = Number(currentColumn.id.substring(6))
     const columnIsFull = map[columnOnMap].indexOf(0) === -1
 
     if (columnIsFull) {return} 
@@ -119,7 +142,18 @@ columns.forEach(item => {
 }) 
 
 
+// Criação do botão para as regras
+const btnRules = document.getElementById("btnRules");
+const rulesText = document.getElementById("rulesText");
+let str = ' <i class="fas fa-file"></i> Regras'
+function showRules(){
+    rulesText.classList.toggle("hidden")
+    if(btnRules.innerHTML === str){
+        btnRules.innerHTML = `<i class="fas fa-file"></i> Fechar regras`
+    }
+    else if (btnRules.innerHTML !== str) {
+        btnRules.innerHTML = str
+    }
+}
 
-
-
-
+btnRules.addEventListener("click", showRules)
