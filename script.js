@@ -21,6 +21,21 @@ let currentPlayer = "Player1"
 //  checar vitoria
 function checkVictory(col,line){
 
+    function checkVertical(coluna,linha) {
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha-3]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha+1]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2]) {console.log(`${currentPlayer} win!`); return true}
+
+        if (map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2] && map[coluna][linha] == map[coluna][linha+3]) {console.log(`${currentPlayer} win!`); return true}
+
+        return false
+
+    } checkVertical(col,line)
+
+    
 }
 
 // checar empate
