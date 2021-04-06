@@ -20,7 +20,7 @@ let currentPlayer = "Player1"
 let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
-
+    
 }
 
 // checar empate
