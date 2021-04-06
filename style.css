@@ -125,13 +125,18 @@ header{
 }
 
 .circle-focus {
-    border: 1px solid black;
-    width: 23px;
-    height: 23px;
-    position: relative;
-    transform: scale(1.2);
-    transition: all 1s ease-in-out;
+    /* border: 1px solid black;
+    width: 25px;
+    height: 25px; */
+
+    animation: jump 1s infinite;
 }
+
+@keyframes jump {
+    0% {transform: translateY(-20%); background-color: green;}
+    100% {transform: translateY(0); }
+}
+
 .playerFocus{ 
     width: fit-content; 
     padding: 3px;
@@ -139,3 +144,4 @@ header{
     background-color: #cac4c4;
     box-shadow: 1px 1px 5px #cac4c4;
 }
+

@@ -234,10 +234,6 @@ for(let i = 0; i < map.length; i++) {
 
     } }
 
-
-column2
-column3
-
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
     const columnOnMap = Number(currentColumn.id.substring(6))
