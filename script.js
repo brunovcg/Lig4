@@ -65,9 +65,9 @@ function checkVictory(col,line){
         const current = map[coluna][linha];
        if (coluna <= 3) {if (current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2] && current === map[coluna+3][linha-3]) {console.log(`${currentPlayer} win!`); return true}}
 
-       else if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {console.log(`${currentPlayer} win!`); return true}}
+       else if (coluna >= 1 && coluna <= 4) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {console.log(`${currentPlayer} win!`); return true}}
 
-       else if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {console.log(`${currentPlayer} win!`); return true}}
+       else if (coluna >= 2 && coluna <= 5 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {console.log(`${currentPlayer} win!`); return true}}
 
        else if (coluna >= 3) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna-3][linha+3]) {console.log(`${currentPlayer} win!`); return true}}
 
