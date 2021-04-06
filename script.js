@@ -17,7 +17,7 @@ let map = [
 const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
-
+let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
 
@@ -35,16 +35,52 @@ function checkVictory(col,line){
 
     } checkVertical(col,line)
 
+        function checkHorizontal(coluna, linha) {
+            if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {console.log(`${currentPlayer} win!`); return true}
+            if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {console.log(`${currentPlayer} win!`); return true}
+            return false
+        } checkHorizontal(col,line)
+
+     function checkDiagonal(coluna,linha) {
+         const current = map[coluna][linha];
+        if (coluna >= 3) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna-3][linha-3]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna+1][linha+1]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha-1] && current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna <= 3) {if (current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2] && current === map[coluna+3][linha+3]) {console.log(`${currentPlayer} win!`); return true}}
+
+         else {return false}
+     } checkDiagonal(col,line)
+
+     function checkDiagonalReverted(coluna,linha) {
+        const current = map[coluna][linha];
+       if (coluna <= 3) {if (current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2] && current === map[coluna+3][linha-3]) {console.log(`${currentPlayer} win!`); return true}}
+
+       else if (coluna >= 1 && coluna <= 4) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {console.log(`${currentPlayer} win!`); return true}}
+
+       else if (coluna >= 2 && coluna <= 5 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {console.log(`${currentPlayer} win!`); return true}}
+
+       else if (coluna >= 3) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna-3][linha+3]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else {return false}
+    } checkDiagonalReverted(col,line)
+
     
 }
+
+
 
 // checar empate
 function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
     if(!checkNum) {
-      //   mensagem. innerHTML =
-      // TIRAR HIDDEN DA TELA DE DRAW
+       draw.innerHTML = "Empatou!";
+       draw.style.display = "block";
     }
 }
 
@@ -97,16 +133,17 @@ for(let i = 0; i < map.length; i++) {
     } }
 
 
-
+column2
+column3
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
     const columnOnMap = Number(currentColumn.id.substring(6))
-    const columnIsFull = map[columnOnMap].indexOf(0) === -1
+    const columnIsFull = map[columnOnMap].indexOf(0) === -1 
 
     if (columnIsFull) {return} 
 
-    const lineOnMap = map[columnOnMap].indexOf(0)
+    const lineOnMap = map[columnOnMap].indexOf(0) 
 
     const mapPosition = document.getElementById(`${columnOnMap}-${lineOnMap}`)
     
@@ -118,7 +155,7 @@ const moveCircle = (e) => {
         mapPosition.classList.add('player2')
         map[columnOnMap][lineOnMap] = 2
     }
-
+    // checkVictoryDiagonal(columnOnMap,lineOnMap)
     checkVictory(columnOnMap,lineOnMap)
     checkDraw()
     changePlayer()
@@ -126,7 +163,7 @@ const moveCircle = (e) => {
     
 }
 
-const columns = document.querySelectorAll('.column')
+const columns = document.querySelectorAll('.column') 
 
 columns.forEach(item => {
     item.addEventListener('click', moveCircle)
