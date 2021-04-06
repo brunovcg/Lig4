@@ -35,6 +35,18 @@ function checkVictory(col,line){
 
     } checkVertical(col,line)
 
+    function checkHorizontal(coluna,linha) {
+        if (coluna >= 3) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna-2][linha] && map[coluna][linha] == map[coluna-3][linha]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna >= 2 && coluna <= 5) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna-2][linha] && map[coluna][linha] == map[coluna+1][linha]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna >= 1 && coluna <= 4 ) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna+1][linha] && map[coluna][linha] == map[coluna+2][linha]) {console.log(`${currentPlayer} win!`); return true}}
+
+        else if (coluna <= 3) {if (map[coluna][linha] == map[coluna+1][linha] && map[coluna][linha] == map[coluna+2][linha] && map[coluna][linha] == map[coluna+3][linha]) {console.log(`${currentPlayer} win!`); return true}}
+
+         else {return false}
+     } checkHorizontal(col,line)
+
     
 }
 
@@ -101,12 +113,12 @@ for(let i = 0; i < map.length; i++) {
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
-    const columnOnMap = Number(currentColumn.id.substring(6))
+    const columnOnMap = parseInt(currentColumn.id.substring(6))
     const columnIsFull = map[columnOnMap].indexOf(0) === -1
 
     if (columnIsFull) {return} 
 
-    const lineOnMap = map[columnOnMap].indexOf(0)
+    const lineOnMap = parseInt(map[columnOnMap].indexOf(0))
 
     const mapPosition = document.getElementById(`${columnOnMap}-${lineOnMap}`)
     
