@@ -37,15 +37,8 @@ function checkVictory(col,line){
     } checkVertical(col,line)
 
     function checkHorizontal(coluna,linha) {
-        if (coluna >= 3) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna-2][linha] && map[coluna][linha] == map[coluna-3][linha]) {console.log(`${currentPlayer} win!`); return true}}
 
-        else if (coluna >= 2 && coluna <= 5) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna-2][linha] && map[coluna][linha] == map[coluna+1][linha]) {console.log(`${currentPlayer} win!`); return true}}
-
-        else if (coluna >= 1 && coluna <= 4 ) {if (map[coluna][linha] == map[coluna-1][linha] && map[coluna][linha] == map[coluna+1][linha] && map[coluna][linha] == map[coluna+2][linha]) {console.log(`${currentPlayer} win!`); return true}}
-
-        else if (coluna <= 3) {if (map[coluna][linha] == map[coluna+1][linha] && map[coluna][linha] == map[coluna+2][linha] && map[coluna][linha] == map[coluna+3][linha]) {console.log(`${currentPlayer} win!`); return true}}
-
-         else {return false}
+        
      } checkHorizontal(col,line)
 
      function checkDiagonal(coluna,linha) {
