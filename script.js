@@ -50,6 +50,8 @@ function reset(){
     // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
 }
 
+const btnReset = document.getElementById("btnReset");
+btnReset.addEventListener("click", reset)
 
 // criação do MAPA com DOM
 for(let i = 0; i < map.length; i++) {
@@ -105,7 +107,15 @@ columns.forEach(item => {
 }) 
 
 
+// Criação do botão para as regras
+const btnRules = document.getElementById("btnRules");
+const rulesText = document.getElementById("rulesText");
 
+function showRules(){
+    rulesText.classList.toggle("hidden")
+   /* if(btnRules.innerHTML === ' <i class="fas fa-file"></i> Regras'){
+        btnRules.innerHTML = `<i class="fas fa-file"></i> Fechar regras`
+    }*/ 
+}
 
-
-
+btnRules.addEventListener("click", showRules)
