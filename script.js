@@ -52,9 +52,13 @@ function checkDraw(){
 function changePlayer(){
 if (currentPlayer === "Player1") { 
     currentPlayer = "Player2"
+    document.getElementById('p2').classList.add('playerFocus')
+    document.getElementById('p1').classList.remove('playerFocus')
     return
 }
 currentPlayer = "Player1"
+document.getElementById('p1').classList.add('playerFocus')
+document.getElementById('p2').classList.remove('playerFocus')
 }
 
 // resetar jogo
@@ -72,6 +76,8 @@ function reset(){
     // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
 }
 
+const btnReset = document.getElementById("btnReset");
+btnReset.addEventListener("click", reset)
 
 // criação do MAPA com DOM
 for(let i = 0; i < map.length; i++) {
@@ -127,7 +133,18 @@ columns.forEach(item => {
 }) 
 
 
+// Criação do botão para as regras
+const btnRules = document.getElementById("btnRules");
+const rulesText = document.getElementById("rulesText");
+let str = ' <i class="fas fa-file"></i> Regras'
+function showRules(){
+    rulesText.classList.toggle("hidden")
+    if(btnRules.innerHTML === str){
+        btnRules.innerHTML = `<i class="fas fa-file"></i> Fechar regras`
+    }
+    else if (btnRules.innerHTML !== str) {
+        btnRules.innerHTML = str
+    }
+}
 
-
-
-
+btnRules.addEventListener("click", showRules)
