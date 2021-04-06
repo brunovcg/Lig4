@@ -95,7 +95,7 @@ for(let i = 0; i < map.length; i++) {
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
-    const columnOnMap = currentColumn.id.substring(6)
+    const columnOnMap = Number(currentColumn.id.substring(6))
     const columnIsFull = map[columnOnMap].indexOf(0) === -1
 
     if (columnIsFull) {return} 
