@@ -17,7 +17,7 @@ let map = [
 const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
-
+let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
 
@@ -27,8 +27,9 @@ function checkVictory(col,line){
 function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
-    if(checkNum === false) {
-      //   mensagem. innerHTML =
+    if(!checkNum) {
+       draw.innerHTML = "Empatou!";
+       draw.style.display = "block";
     }
 }
 
