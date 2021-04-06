@@ -28,7 +28,7 @@ header{
 
 .btnGame{
     height: 40px;
-    width: 140px;
+    width: 149px;
     font-size: 9px;
     border-radius: 10px;
     margin: -40px auto 50px;
@@ -112,4 +112,8 @@ header{
 
 .player2{
     background-color: #00bbff;
+}
+
+.playerFocus {
+    
 }
