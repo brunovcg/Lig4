@@ -20,7 +20,14 @@ let currentPlayer = "Player1"
 let draw = document.getElementById("msgDraw")
 //  checar vitoria
 function checkVictory(col,line){
-    
+    function checkHorizontal(coluna, linha) {
+        if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {console.log(`${currentPlayer} win!`); return true}
+        if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {console.log(`${currentPlayer} win!`); return true}
+        if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {console.log(`${currentPlayer} win!`); return true}
+        if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {console.log(`${currentPlayer} win!`); return true}
+        return false
+    } 
+    checkHorizontal(col,line)
 }
 
 // checar empate
