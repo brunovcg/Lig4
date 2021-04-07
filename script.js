@@ -20,6 +20,10 @@ let currentPlayer = "Player1"
 let draw = document.getElementById("msgDraw")
 let victory = document.getElementById("msgVictory")
 
+const soundVictory = new Audio("./sounds/VICTORY.mp3");
+const soundDraw = new Audio('./sounds/GAMEOVER.mp3');
+
+
 function focusCircle(col,line) {
     const circleTarget = document.getElementById(`${col}-${line}`);
     circleTarget.classList.add('circle-focus')
@@ -213,7 +217,8 @@ function reset(){
 
     draw.classList.add('hidden')
     victory.classList.add('hidden')
-    // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
+    soundVictory.pause()
+    soundDraw.pause()
 }
 
 const btnReset = document.getElementById("btnReset");
@@ -292,15 +297,15 @@ btnRules.addEventListener("click", showRules)
 
 // Sons de efeito para vitória e derrota
 function playVictory(){
-    let audio = new Audio("./sounds/VICTORY.mp3");
-    audio.volume = 0.2;
-    audio.currentTime = 0;
-    audio.play()
+    // let audio = new Audio("./sounds/VICTORY.mp3");
+    soundVictory.volume = 0.2;
+    soundVictory.currentTime = 0;
+    soundVictory.play()
 }
 
 function playGameOver(){
-    var audio = new Audio('./sounds/GAMEOVER.mp3');
-    audio.volume = 0.3;
-    audio.currentTime = 0.5;
-    audio.play()
+    // var audio = new Audio('./sounds/GAMEOVER.mp3');
+    soundDraw.volume = 0.3;
+    soundDraw.currentTime = 0.5;
+    soundDraw.play()
 }
