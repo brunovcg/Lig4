@@ -145,3 +145,30 @@ header{
     box-shadow: 1px 1px 5px #cac4c4;
 }
 
+/* .playerFocus {
+    
+} */
+#mensagens {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: initial;
+    text-align: center;
+}
+#msgDraw, #msgVictory {
+    background-color: black;
+    padding: 10px;
+    position: absolute;
+    /* border: 3px red solid; */
+    width: 246px;
+    height: 183px;
+    border-radius: 10%;
+    opacity: 44%;
+}
+#empate, #vitoria {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    color: white;
+    margin-top: 80px;
+}

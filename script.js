@@ -18,6 +18,7 @@ const main = document.getElementById("gameBoard")
 
 let currentPlayer = "Player1"
 let draw = document.getElementById("msgDraw")
+let victory = document.getElementById("msgVictory")
 
 function focusCircle(col,line) {
     const circleTarget = document.getElementById(`${col}-${line}`);
@@ -30,7 +31,7 @@ function checkVictory(col,line){
     function checkVertical(coluna,linha) {
 
         if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha-3]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna,linha-1)
             focusCircle(coluna,linha-2)
@@ -38,7 +39,7 @@ function checkVictory(col,line){
             return true}
 
         if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha-2] && map[coluna][linha] == map[coluna][linha+1]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna,linha-1)
             focusCircle(coluna,linha-2)
@@ -46,7 +47,7 @@ function checkVictory(col,line){
             return true}
 
         if (map[coluna][linha] == map[coluna][linha-1] && map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna,linha-1)
             focusCircle(coluna,linha+1)
@@ -54,7 +55,7 @@ function checkVictory(col,line){
             return true}
 
         if (map[coluna][linha] == map[coluna][linha+1] && map[coluna][linha] == map[coluna][linha+2] && map[coluna][linha] == map[coluna][linha+3]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna,linha+1)
             focusCircle(coluna,linha+2)
@@ -63,44 +64,44 @@ function checkVictory(col,line){
 
         return false
 
-    } checkVertical(col,line)
+    } if (checkVertical(col,line)) {return true}
 
         function checkHorizontal(coluna, linha) {
             if(map[0][linha] != 0 && map[0][linha] == map[1][linha] && map[0][linha] == map[2][linha] && map[0][linha] == map[3][linha]) {
-                console.log(`${currentPlayer} win!`);
+                // console.log(`${currentPlayer} win!`);
                 focusCircle(0,linha)
                 focusCircle(1,linha)
                 focusCircle(2,linha)
                 focusCircle(3,linha)
                 return true}
             if(map[1][linha] != 0 && map[1][linha] == map[2][linha] && map[1][linha] == map[3][linha] && map[1][linha] == map[4][linha]) {
-                console.log(`${currentPlayer} win!`);
+                // console.log(`${currentPlayer} win!`);
                 focusCircle(1,linha)
                 focusCircle(2,linha)
                 focusCircle(3,linha)
                 focusCircle(4,linha)
                 return true}
             if(map[2][linha] != 0 && map[2][linha] == map[3][linha] && map[2][linha] == map[4][linha] && map[2][linha] == map[5][linha]) {
-                console.log(`${currentPlayer} win!`);
+                // console.log(`${currentPlayer} win!`);
                 focusCircle(2,linha)
                 focusCircle(3,linha)
                 focusCircle(4,linha)
                 focusCircle(5,linha)
                 return true}
             if(map[3][linha] != 0 && map[3][linha] == map[4][linha] && map[3][linha] == map[5][linha] && map[3][linha] == map[6][linha]) {
-                console.log(`${currentPlayer} win!`); 
+                // console.log(`${currentPlayer} win!`); 
                 focusCircle(3,linha)
                 focusCircle(4,linha)
                 focusCircle(5,linha)
                 focusCircle(6,linha)
                 return true}
             return false
-        } checkHorizontal(col,line)
+        } if (checkHorizontal(col,line)) {return true}
 
      function checkDiagonal(coluna,linha) {
          const current = map[coluna][linha];
         if (coluna >= 3) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna-3][linha-3]) {
-            console.log(`${currentPlayer} win!`);
+            // console.log(`${currentPlayer} win!`);
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna-2,linha-2)
@@ -108,7 +109,7 @@ function checkVictory(col,line){
             return true}}
 
         else if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna+1][linha+1]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna-2,linha-2)
@@ -116,7 +117,7 @@ function checkVictory(col,line){
             return true}}
 
         else if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha-1] && current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna+1,linha+1)
@@ -124,7 +125,7 @@ function checkVictory(col,line){
             return true}}
 
         else if (coluna <= 3) {if (current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2] && current === map[coluna+3][linha+3]) {
-            console.log(`${currentPlayer} win!`); 
+            // console.log(`${currentPlayer} win!`); 
             focusCircle(coluna,linha)
             focusCircle(coluna+1,linha+1)
             focusCircle(coluna+2,linha+2)
@@ -132,12 +133,12 @@ function checkVictory(col,line){
             return true}}
 
          else {return false}
-     } checkDiagonal(col,line)
+     } if (checkDiagonal(col,line)) {return true}
 
      function checkDiagonalReverted(coluna,linha) {
         const current = map[coluna][linha];
        if (coluna <= 3) {if (current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2] && current === map[coluna+3][linha-3]) {
-           console.log(`${currentPlayer} win!`);
+           //console.log(`${currentPlayer} win!`);
            focusCircle(coluna,linha)
            focusCircle(coluna+1,linha-1)
            focusCircle(coluna+2,linha-2)
@@ -145,7 +146,7 @@ function checkVictory(col,line){
            return true}}
 
        else if (coluna >= 1 && coluna <= 4) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {
-           console.log(`${currentPlayer} win!`); 
+           //console.log(`${currentPlayer} win!`); 
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna-2,linha+2)
@@ -153,7 +154,7 @@ function checkVictory(col,line){
            return true}}
 
        else if (coluna >= 2 && coluna <= 5 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {
-           console.log(`${currentPlayer} win!`); 
+           //console.log(`${currentPlayer} win!`); 
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna+1,linha-1)
@@ -161,7 +162,7 @@ function checkVictory(col,line){
            return true}}
 
        else if (coluna >= 3) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna-3][linha+3]) {
-           console.log(`${currentPlayer} win!`); 
+           //console.log(`${currentPlayer} win!`); 
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna-2,linha+2)
@@ -169,20 +170,17 @@ function checkVictory(col,line){
            return true}}
 
         else {return false}
-    } checkDiagonalReverted(col,line)
+    } if (checkDiagonalReverted(col,line)) {return true}
 
     
 }
-
-
 
 // checar empate
 function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
     if(!checkNum) {
-       draw.innerHTML = "Empatou!";
-       draw.style.display = "block";
+       draw.classList.remove('hidden')
     }
 }
 
@@ -211,6 +209,9 @@ function reset(){
         }
     }
     currentPlayer = 'Player1'
+
+    draw.classList.add('hidden')
+    victory.classList.add('hidden')
     // DAR DISPLAY NONE PRAS DIVS DE VITÓRIA E EMPATE
 }
 
@@ -253,8 +254,12 @@ const moveCircle = (e) => {
         mapPosition.classList.add('player2')
         map[columnOnMap][lineOnMap] = 2
     }
-    // checkVictoryDiagonal(columnOnMap,lineOnMap)
-    checkVictory(columnOnMap,lineOnMap)
+
+    if (checkVictory(columnOnMap,lineOnMap)) {
+        document.getElementById('msgVictory').classList.remove('hidden')
+        console.log('teste')
+        return
+    }
     checkDraw()
     changePlayer()
 
