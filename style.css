@@ -148,18 +148,27 @@ header{
 /* .playerFocus {
     
 } */
-
+#mensagens {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: initial;
+    text-align: center;
+}
 #msgDraw {
+    background-color: black;
+    padding: 10px;
+    position: absolute;
+    /* border: 3px red solid; */
+       width: 81vw;
+    height: 29vh;
+    box-shadow: 2px 2px 10px #cac4c4;
+    border-radius: 10%;
+}
+#empate {
     font-family: 'Press Start 2P', sans-serif;
     font-size: 21px;
     font-weight: bold;
     color: white;
-    background-color: black;
-    padding: 10px;
-    margin: 0 auto;
-    width: 71vw;
-    height: 30vh;
-    padding: 10px;
-    margin: -205px 44px;
-    position: absolute;
+    margin-top: 80px;
 }
