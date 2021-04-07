@@ -181,6 +181,7 @@ function checkDraw(){
     let checkNum = merged.includes(0);
     if(!checkNum) {
        draw.classList.remove('hidden')
+       playGameOver()
     }
 }
 
@@ -258,11 +259,11 @@ const moveCircle = (e) => {
     if (checkVictory(columnOnMap,lineOnMap)) {
         document.getElementById('msgVictory').classList.remove('hidden')
         console.log('teste')
+        playVictory()
         return
     }
     checkDraw()
     changePlayer()
-
     
 }
 
@@ -288,3 +289,18 @@ function showRules(){
 }
 
 btnRules.addEventListener("click", showRules)
+
+// Sons de efeito para vitória e derrota
+function playVictory(){
+    let audio = new Audio("./sounds/VICTORY.mp3");
+    audio.volume = 0.2;
+    audio.currentTime = 0;
+    audio.play()
+}
+
+function playGameOver(){
+    var audio = new Audio('./sounds/GAMEOVER.mp3');
+    audio.volume = 0.3;
+    audio.currentTime = 0.5;
+    audio.play()
+}
