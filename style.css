@@ -34,6 +34,7 @@ header{
     margin: -40px auto 50px;
     box-shadow: 1px 1px 10px #cac4c4;
     font-family: 'Press Start 2P', sans-serif;
+    outline: none;
 }
 
 #btnReset{
@@ -55,6 +56,7 @@ header{
     margin: 260px auto 50px;
     background-color: #cac4c4;
     box-shadow: 2px 2px 10px #cac4c4;
+    z-index: 2;
 }
 
 #gameBoard{
@@ -83,35 +85,64 @@ header{
     background-color: #fff;
 }
 
+#boxPlayers{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    max-width: 320px;
+    margin: 10px auto;
+}
+
+.players{
+    position: relative;
+    margin: 15px auto;
+    color: #c0c0c088;
+    font-size: 9px;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
 .playersLine{
-    display: block;
     text-align: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.players{ 
-    margin: 25px auto;
-    color: #c0c0c088;
-    font-size: 9px;
-    border-radius: 10px;
-    font-family: 'Press Start 2P', sans-serif;    
-}
-
 .colorP1{
-    color: #ff0019a1;
+    color: #ff0000;
 }
 
 .colorP2{
-    color: #00bbffa1;
+    color: #0000ff;
 }
 
 .player1{
-    background-color: #ff0019;
+    background-color: #ff0000;
 }
 
 .player2{
-    background-color: #00bbff;
+    background-color: #0000ff;
+}
+
+.circle-focus {
+    /* border: 1px solid black;
+    width: 25px;
+    height: 25px; */
+
+    animation: jump 1s infinite;
+}
+
+@keyframes jump {
+    0% {transform: translateY(-20%); background-color: green;}
+    100% {transform: translateY(0); }
+}
+
+.playerFocus{ 
+    width: fit-content; 
+    padding: 3px;
+    color: black;
+    background-color: #cac4c4;
+    box-shadow: 1px 1px 5px #cac4c4;
 }
 
 /* .playerFocus {
