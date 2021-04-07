@@ -117,3 +117,18 @@ header{
 /* .playerFocus {
     
 } */
+
+#msgDraw {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    margin: 0 auto;
+    width: 71vw;
+    height: 30vh;
+    padding: 10px;
+    margin: -205px 44px;
+    position: absolute;
+}

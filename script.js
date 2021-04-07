@@ -72,14 +72,12 @@ function checkVictory(col,line){
     
 }
 
-
-
 // checar empate
 function checkDraw(){
     let merged = [].concat.apply([], map);
     let checkNum = merged.includes(0);
     if(!checkNum) {
-       draw.innerHTML = "Empatou!";
+    //    draw.innerHTML = "Empatou!";
        draw.style.display = "block";
     }
 }
