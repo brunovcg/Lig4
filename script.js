@@ -14,15 +14,15 @@ let map = [
  [0,0,0,0,0,0]
 ]
 
-const main = document.getElementById("gameBoard")
+
 
 let currentPlayer = "Player1"
-let draw = document.getElementById("msgDraw")
-let victory = document.getElementById("msgVictory")
 
-const soundVictory = new Audio("./sounds/VICTORY.mp3");
-const soundDraw = new Audio('./sounds/GAMEOVER.mp3');
-
+const main = document.getElementById("gameBoard")
+const draw = document.getElementById("msgDraw")
+const victory = document.getElementById("msgVictory")
+const audioOver = new Audio('./sounds/GAMEOVER.mp3');
+const audioVictory = new Audio("./sounds/VICTORY.mp3");
 
 function focusCircle(col,line) {
     const circleTarget = document.getElementById(`${col}-${line}`);
@@ -104,76 +104,78 @@ function checkVictory(col,line){
 
      function checkDiagonal(coluna,linha) {
          const current = map[coluna][linha];
+
         if (coluna >= 3) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna-3][linha-3]) {
-            // console.log(`${currentPlayer} win!`);
+            
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna-2,linha-2)
             focusCircle(coluna-3,linha-3)
             return true}}
-
-        else if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna+1][linha+1]) {
-            // console.log(`${currentPlayer} win!`); 
+            
+        if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha-1] && current === map[coluna-2][linha-2] && current === map[coluna+1][linha+1]) {
+            
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna-2,linha-2)
             focusCircle(coluna+1,linha+1)
             return true}}
 
-        else if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha-1] && current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2]) {
-            // console.log(`${currentPlayer} win!`); 
+        if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha-1] && current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2]) {
+            
             focusCircle(coluna,linha)
             focusCircle(coluna-1,linha-1)
             focusCircle(coluna+1,linha+1)
             focusCircle(coluna+2,linha+2)
             return true}}
 
-        else if (coluna <= 3) {if (current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2] && current === map[coluna+3][linha+3]) {
-            // console.log(`${currentPlayer} win!`); 
+        if (coluna <= 3) {if (current === map[coluna+1][linha+1] && current === map[coluna+2][linha+2] && current === map[coluna+3][linha+3]) {
+            
             focusCircle(coluna,linha)
             focusCircle(coluna+1,linha+1)
             focusCircle(coluna+2,linha+2)
             focusCircle(coluna+3,linha+3)
             return true}}
 
-         else {return false}
+             return false
+
      } if (checkDiagonal(col,line)) {return true}
 
      function checkDiagonalReverted(coluna,linha) {
         const current = map[coluna][linha];
        if (coluna <= 3) {if (current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2] && current === map[coluna+3][linha-3]) {
-           //console.log(`${currentPlayer} win!`);
+       
            focusCircle(coluna,linha)
            focusCircle(coluna+1,linha-1)
            focusCircle(coluna+2,linha-2)
            focusCircle(coluna+3,linha-3)
            return true}}
 
-       else if (coluna >= 1 && coluna <= 4) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {
-           //console.log(`${currentPlayer} win!`); 
+       if (coluna >= 2 && coluna <= 5) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna+1][linha-1]) {
+            
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna-2,linha+2)
            focusCircle(coluna+1,linha-1)
            return true}}
 
-       else if (coluna >= 2 && coluna <= 5 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {
-           //console.log(`${currentPlayer} win!`); 
+       if (coluna >= 1 && coluna <= 4 ) {if (current === map[coluna-1][linha+1] && current === map[coluna+1][linha-1] && current === map[coluna+2][linha-2]) {
+          
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna+1,linha-1)
            focusCircle(coluna+2,linha-2)
-           return true}}
-
-       else if (coluna >= 3) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna-3][linha+3]) {
-           //console.log(`${currentPlayer} win!`); 
+           return true}}  
+       
+       if (coluna >= 3) {if (current === map[coluna-1][linha+1] && current === map[coluna-2][linha+2] && current === map[coluna-3][linha+3]) {
+           
            focusCircle(coluna,linha)
            focusCircle(coluna-1,linha+1)
            focusCircle(coluna-2,linha+2)
            focusCircle(coluna-3,linha+3)
            return true}}
 
-        else {return false}
+        return false
     } if (checkDiagonalReverted(col,line)) {return true}
 
     
@@ -213,12 +215,14 @@ function reset(){
             circleOnMap.classList.remove('circle-focus')
         }
     }
+
+    
     currentPlayer = 'Player1'
 
     draw.classList.add('hidden')
     victory.classList.add('hidden')
-    soundVictory.pause()
-    soundDraw.pause()
+    audioOver.pause()
+    audioVictory.pause()
 }
 
 const btnReset = document.getElementById("btnReset");
@@ -243,13 +247,12 @@ for(let i = 0; i < map.length; i++) {
 
 const moveCircle = (e) => {
     const currentColumn = e.currentTarget;
-    const columnOnMap = Number(currentColumn.id.substring(6))
+    const columnOnMap = parseInt(currentColumn.id.substring(6))
     const columnIsFull = map[columnOnMap].indexOf(0) === -1 
 
     if (columnIsFull) {return} 
 
-    const lineOnMap = map[columnOnMap].indexOf(0) 
-
+    const lineOnMap = parseInt(map[columnOnMap].indexOf(0))
     const mapPosition = document.getElementById(`${columnOnMap}-${lineOnMap}`)
     
     if (currentPlayer === 'Player1') {
@@ -263,7 +266,6 @@ const moveCircle = (e) => {
 
     if (checkVictory(columnOnMap,lineOnMap)) {
         document.getElementById('msgVictory').classList.remove('hidden')
-        console.log('teste')
         playVictory()
         return
     }
@@ -283,6 +285,7 @@ columns.forEach(item => {
 const btnRules = document.getElementById("btnRules");
 const rulesText = document.getElementById("rulesText");
 let str = ' <i class="fas fa-file"></i> Regras'
+
 function showRules(){
     rulesText.classList.toggle("hidden")
     if(btnRules.innerHTML === str){
@@ -297,15 +300,15 @@ btnRules.addEventListener("click", showRules)
 
 // Sons de efeito para vitória e derrota
 function playVictory(){
-    // let audio = new Audio("./sounds/VICTORY.mp3");
-    soundVictory.volume = 0.2;
-    soundVictory.currentTime = 0;
-    soundVictory.play()
+    
+    audioVictory.volume = 0.2;
+    audioVictory.currentTime = 0;
+    audioVictory.play()
 }
 
 function playGameOver(){
-    // var audio = new Audio('./sounds/GAMEOVER.mp3');
-    soundDraw.volume = 0.3;
-    soundDraw.currentTime = 0.5;
-    soundDraw.play()
+    
+    audioOver.volume = 0.3;
+    audioOver.currentTime = 0.5;
+    audioOver.play()
 }
